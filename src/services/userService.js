@@ -20,21 +20,21 @@ let handleUserLogin = (username, password) => {
                     
                     if (check) {
                         userData.errorCode = 3;
-                        userData.Message = 'ok';
+                        userData.message = 'ok';
                         delete user.password;
                         userData.user = user;
                     } else {
                         userData.errorCode = 4;
-                        userData.Message = 'not ok';
+                        userData.message = 'not ok';
                     }
                 } else {
                     userData.errorCode = 2;
-                    userData.Message = 'User false username or password';
+                    userData.message = 'User false username or password';
                 }
             }
             else{
                 userData.errorCode = 1;
-                userData.Message = 'Username or password not found';
+                userData.message = 'Username or password not found';
             }
             resolve(userData);
         } catch (error) {

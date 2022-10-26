@@ -9,8 +9,8 @@ let handleLogin = async (req, res) => {
 
     if (!username || !password) {
         return res.status(500).json({
-            is_active: 1,
-            error: 'Missing username or password'
+            errorCode: 1,
+            message: 'Missing username or password'
         })
     }
 
@@ -18,7 +18,7 @@ let handleLogin = async (req, res) => {
 
     return res.status(200).json({
         errorCode: userData.errorCode,
-        Message: userData.Message,
+        message: userData.message,
         user: userData.user ? userData.user : {}
     })
 }
