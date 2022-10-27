@@ -19,22 +19,22 @@ let handleUserLogin = (username, password) => {
                     let check = await bcrypt.compareSync(password, user.password); // true
                     
                     if (check) {
-                        userData.errorCode = 3;
-                        userData.message = 'ok';
+                        userData.errorCode = 0;
+                        userData.message = 'Logged in successfully';
                         delete user.password;
                         userData.user = user;
                     } else {
-                        userData.errorCode = 4;
-                        userData.message = 'not ok';
+                        userData.errorCode = 2;
+                        userData.message = 'Wrong account or password';
                     }
                 } else {
-                    userData.errorCode = 2;
-                    userData.message = 'User false username or password';
+                    userData.errorCode = 3;
+                    userData.message = 'This account does not exist';
                 }
             }
             else{
-                userData.errorCode = 1;
-                userData.message = 'Username or password not found';
+                userData.errorCode = 3;
+                userData.message = 'This account does not exist';
             }
             resolve(userData);
         } catch (error) {
