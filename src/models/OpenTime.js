@@ -14,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   OpenTime.init({
-    opening: DataTypes.INTEGER,
-    closing: DataTypes.INTEGER,
+    start: DataTypes.DATE,
+    finish: DataTypes.DATE,
+    storeId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'OpenTime',

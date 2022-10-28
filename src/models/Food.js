@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     images: DataTypes.STRING,
-    category_id: DataTypes.INTEGER,
-    is_active: DataTypes.BOOLEAN,
+    classifyId: DataTypes.INTEGER,
+    isActive: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Food',

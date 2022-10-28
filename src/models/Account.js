@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Account.init({
-    username: DataTypes.STRING,
+    email: DataTypes.STRING,
     password: DataTypes.STRING,
-    is_active: DataTypes.BOOLEAN,
-    store_id: DataTypes.INTEGER,
-    accounttype_id: DataTypes.INTEGER,
+    isActive: DataTypes.BOOLEAN,
+    storeId: DataTypes.INTEGER,
+    accountType: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Account',

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Ward.init({
     name: DataTypes.STRING,
-    district_id: DataTypes.INTEGER,
+    districtId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Ward',

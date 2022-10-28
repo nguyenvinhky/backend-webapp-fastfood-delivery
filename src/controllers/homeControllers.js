@@ -3,7 +3,7 @@ import db from '../models/index';
 import CRUDService from '../services/CRUDService';
 let homeControllers = async (req, res) => {
     try {
-        let data = await db.User.findAll();
+        let data = await db.Account.findAll();
         
         return res.render('demo.ejs', {
             data: JSON.stringify(data)

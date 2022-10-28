@@ -1,22 +1,25 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('cart', {
+    await queryInterface.createTable('OpenTimes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      date_create: {
+      start: {
         type: Sequelize.DATE
       },
-      customer_id: {
+      finish: {
+        type: Sequelize.DATE
+      },
+      storeId: {
         type: Sequelize.INTEGER
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('cart');
+    await queryInterface.dropTable('OpenTimes');
   }
 };

@@ -2,16 +2,16 @@
 import db from '../models/index';
 import bcrypt from 'bcryptjs';
 
-let handleUserLogin = (username, password) => {
+let handleUserLogin = (email, password) => {
     return new Promise(async(resolve, reject) => {
         try {
             let userData = {};
 
-            let isExist = await checkUser(username);
+            let isExist = await checkUser(email);
             if (isExist) {
-                let user = await db.User.findOne({
-                    attributes: ['username', 'password'],
-                    where: { username: username },
+                let user = await db.Account.findOne({
+                    attributes: ['email', 'password'],
+                    where: { email: email },
                     raw: true
                 })
 
@@ -43,11 +43,11 @@ let handleUserLogin = (username, password) => {
     })
 }
 
-let checkUser = (username) => {
+let checkUser = (email) => {
     return new Promise(async(resolve, reject) => {
         try {
-            let user = await db.User.findOne({
-                where: { username: username},
+            let user = await db.Account.findOne({
+                where: { email: email},
             })
             resolve(user);
         } catch (error) {

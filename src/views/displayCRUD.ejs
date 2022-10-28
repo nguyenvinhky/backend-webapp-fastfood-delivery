@@ -54,11 +54,11 @@
         <% for(let i=0; i < dataTable.length; i++) { %>
             <tr>
               <td><%= dataTable[i].id %></td>
-              <td><%= dataTable[i].username %></td>
+              <td><%= dataTable[i].email %></td>
               <td><%= dataTable[i].password %></td>
-              <td><%= dataTable[i].is_active %></td>
-              <td><%= dataTable[i].id_store %></td>
-              <td><%= dataTable[i].id_type_account %></td>
+              <td><%= dataTable[i].isActive %></td>
+              <td><%= dataTable[i].storeID %></td>
+              <td><%= dataTable[i].AccountType %></td>
               <td>
                 <button class="btnEdit" type="button"><a class="link" href="/edit-crud?id=<%=dataTable[i].id%>">Edit</a></button>
                 <button class="btnDelete" type="button"><a class="link" href="/delete-crud?id=<%=dataTable[i].id%>">Delete</a></button>

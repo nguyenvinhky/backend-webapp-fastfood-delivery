@@ -17,9 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     email: DataTypes.STRING,
     address: DataTypes.STRING,
-    ward_id: DataTypes.INTEGER,
-    district_id: DataTypes.INTEGER,
-    province_id: DataTypes.INTEGER,
+    wardId: DataTypes.INTEGER,
+    districtId: DataTypes.INTEGER,
+    provinceId: DataTypes.INTEGER,
+    customerId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'CustomerInfo',

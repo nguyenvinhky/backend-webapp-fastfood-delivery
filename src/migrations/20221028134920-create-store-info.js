@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('storeinfo', {
+    await queryInterface.createTable('StoreInfos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,30 +17,30 @@ module.exports = {
       address: {
         type: Sequelize.STRING
       },
-      ward_id: {
+      wardId: {
         type: Sequelize.INTEGER
       },
-      district_id: {
+      districtId: {
         type: Sequelize.INTEGER
       },
-      province_id: {
+      provinceId: {
         type: Sequelize.INTEGER
       },
-      businesstype_id: {
+      businessTypeId: {
         type: Sequelize.INTEGER
       },
-      store_id: {
+      storeId: {
         type: Sequelize.INTEGER
       },
-      cuisine_id: {
+      cuisineId: {
         type: Sequelize.INTEGER
       },
-      opentime_id: {
+      statusId: {
         type: Sequelize.INTEGER
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('storeinfo');
+    await queryInterface.dropTable('StoreInfos');
   }
 };

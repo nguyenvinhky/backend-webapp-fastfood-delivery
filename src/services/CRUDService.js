@@ -8,14 +8,14 @@ let createNewAccount = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             let letHashPass = await hassAccountPassWord(data.pass);
-            await db.User.create({
-                username: data.user,
+            await db.Account.create({
+                email: data.user,
                 password: letHashPass,
-                is_active: data.active,
-                id_store: data.idshop,
-                id_type_account: data.idtypeaccount,
+                isActive: data.active,
+                storeId: data.idshop,
+                accountType: data.idtypeaccount,
             },);
-            let allUser = await db.User.findAll({
+            let allUser = await db.Account.findAll({
                 raw: true
             })
             resolve(allUser);
@@ -39,7 +39,7 @@ let hassAccountPassWord = (password) =>{
 let getAllUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let user = db.User.findAll({
+            let user = db.Account.findAll({
                 raw: true,
             });
             resolve(user);
@@ -52,7 +52,7 @@ let getAllUser = () => {
 let getUserInfoById = async (userId) => {
     return new Promise(async (resolve, reject) =>{
         try {
-            let user = await db.User.findOne({
+            let user = await db.Account.findOne({
                 where: {id: userId},
                 raw: true
             })
@@ -72,14 +72,14 @@ let getUserInfoById = async (userId) => {
 let updateCRUD = (data) => {
     return new Promise(async(resolve, reject)=>{
         try {
-            let user = await db.User.findOne({
+            let user = await db.Account.findOne({
                 where: {id: data.id}
             })
             if (user) {
-                user.username = data.user;
-                await user.save();
+                user.email = data.email;
+                await Account.save();
 
-                let allUser = await db.User.findAll();
+                let allUser = await db.Account.findAll();
                 resolve(allUser);
             }
             else{
@@ -94,7 +94,7 @@ let updateCRUD = (data) => {
 let deleteCRUDfromService = (userId) =>{
     return new Promise(async(resolve, reject)=>{
         try {
-            let user = await db.User.findOne({
+            let user = await db.Account.findOne({
                 where: {id: userId}
             })
 
@@ -102,7 +102,7 @@ let deleteCRUDfromService = (userId) =>{
                 await user.destroy();
             }
             
-            let allUser = await db.User.findAll({
+            let allUser = await db.Account.findAll({
                 raw: true
             })
             resolve(allUser);

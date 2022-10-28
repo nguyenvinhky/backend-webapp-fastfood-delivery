@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Bill.init({
-    customer_id: DataTypes.INTEGER,
-    cart_id: DataTypes.INTEGER,
+    customerId: DataTypes.INTEGER,
+    cartId: DataTypes.INTEGER,
     total: DataTypes.INTEGER,
-    is_paid: DataTypes.BOOLEAN,
+    isPaid: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Bill',
