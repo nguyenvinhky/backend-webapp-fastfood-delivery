@@ -1,5 +1,5 @@
 
-import db from '../models/index';
+import database from '../models/index'
 import bcrypt from 'bcryptjs';
 
 let handleUserLogin = (email, password) => {
@@ -9,7 +9,7 @@ let handleUserLogin = (email, password) => {
 
             let isExist = await checkUser(email);
             if (isExist) {
-                let user = await db.Account.findOne({
+                let user = await database.Account.findOne({
                     attributes: ['email', 'password'],
                     where: { email: email },
                     raw: true
@@ -46,7 +46,7 @@ let handleUserLogin = (email, password) => {
 let checkUser = (email) => {
     return new Promise(async(resolve, reject) => {
         try {
-            let user = await db.Account.findOne({
+            let user = await database.Account.findOne({
                 where: { email: email},
             })
             resolve(user);
@@ -56,6 +56,32 @@ let checkUser = (email) => {
     })
 }
 
+let GetAllAccount = (id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = '';
+            if(id === 'all'){
+                users = await database.Account.findAll({ 
+                    attributes: {exclude: 'password'},
+                    raw: true
+                });
+            }
+
+            if(id !== 'all'){
+                users = await database.Account.findAll({
+                    attributes: {exclude: 'password'},
+                    where: { id: id },
+                    raw: true,
+                });
+            }
+            resolve(users);
+        } catch (error) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
+    GetAllAccount: GetAllAccount,
 }

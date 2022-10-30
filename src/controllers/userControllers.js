@@ -23,6 +23,17 @@ let handleLogin = async (req, res) => {
     })
 }
 
+let handleGetAllAccount = async (req, res) => {
+    let id = req.body.id; //ALL, ID
+    let users = await usersService.GetAllAccount(id);
+    return res.status(200).json({
+        errorCode: 0,
+        message: 'Ok',
+        users
+    })
+}
+
 module.exports = {
-    handleLogin: handleLogin
+    handleLogin: handleLogin,
+    handleGetAllAccount: handleGetAllAccount
 }
