@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display CRUD</title>
+    <style>
+        table, th, td {
+          border:1px solid black;
+          border-collapse: collapse;
+        }
+        .btnEdit{
+            background: rgb(240, 158, 7);
+            border-radius: 10px;
+            margin: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            height: 30px;
+            width: 63px;
+            cursor: pointer;
+        }
+        .btnDelete{
+            background: rgb(226, 37, 37);
+            border-radius: 10px;
+            margin: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            height: 30px;
+            width: 63px;
+            cursor: pointer;
+        }
+
+        .link{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btnEdit" type="button"><a class="link" href="/crud">Back</a></button>
+    <table style="width:100%">
+        <tr>
+          <td>ID</td>
+          <td>Username</td>
+          <td>Password</td>
+          <td>Active</td>
+          <td>Store ID</td>
+          <td>Type Account ID</td>
+          <td>Actions</td>
+        </tr>
+        <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+              <td><%= dataTable[i].id %></td>
+              <td><%= dataTable[i].email %></td>
+              <td><%= dataTable[i].password %></td>
+              <td><%= dataTable[i].isActive %></td>
+              <td><%= dataTable[i].storeId %></td>
+              <td><%= dataTable[i].accountType %></td>
+              <td>
+                <button class="btnEdit" type="button"><a class="link" href="/edit-crud?id=<%=dataTable[i].id%>">Edit</a></button>
+                <button class="btnDelete" type="button"><a class="link" href="/delete-crud?id=<%=dataTable[i].id%>">Delete</a></button>
+              </td>
+            </tr>
+         <% } %>
+      </table>
+</body>
+</html>
